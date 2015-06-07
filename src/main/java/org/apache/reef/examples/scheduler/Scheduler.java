@@ -72,7 +72,7 @@ final class Scheduler {
     final String command = task.getCommand();
 
     final Configuration taskConf = TaskConfiguration.CONF
-      .set(TaskConfiguration.TASK, ShellTask.class)
+      .set(TaskConfiguration.TASK, ForeverFailingTask.class)
       .set(TaskConfiguration.IDENTIFIER, taskId.toString())
       .build();
     final Configuration commandConf = Tang.Factory.getTang().newConfigurationBuilder()
