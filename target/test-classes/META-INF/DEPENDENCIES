@@ -103,9 +103,9 @@ From: 'The Apache Software Foundation' (http://www.apache.org/)
     License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
   - REEF HTTP Server (http://reef.incubator.apache.org/lang/java/reef-webserver) org.apache.reef:reef-webserver:jar:0.12.0-incubating-SNAPSHOT
     License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
-  - REEF Tang (http://reef.incubator.apache.org/lang/java/tang-project/tang) org.apache.reef:tang:jar:0.12.0-incubating-SNAPSHOT
+  - REEF Tang (http://reef.incubator.apache.org/tang-project/tang) org.apache.reef:tang:jar:0.12.0-incubating-SNAPSHOT
     License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
-  - REEF Wake (http://reef.incubator.apache.org/lang/java/wake-project/wake) org.apache.reef:wake:jar:0.12.0-incubating-SNAPSHOT
+  - REEF Wake (http://reef.incubator.apache.org/wake-project/wake) org.apache.reef:wake:jar:0.12.0-incubating-SNAPSHOT
     License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
 
 From: 'The Netty Project' (http://netty.io/)

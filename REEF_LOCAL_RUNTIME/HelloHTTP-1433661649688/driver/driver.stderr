@@ -1,0 +1,173 @@
+6월 07, 2015 4:20:51 오후 org.apache.reef.util.REEFVersion logVersion
+정보: REEF Version: 0.12.0-incubating-SNAPSHOT
+6월 07, 2015 4:20:51 오후 org.apache.reef.wake.remote.address.HostnameBasedLocalAddressProvider <init>
+정보: Instantiating HostnameBasedLocalAddressProvider
+6월 07, 2015 4:20:53 오후 org.apache.reef.wake.remote.address.HostnameBasedLocalAddressProvider <init>
+정보: Instantiating HostnameBasedLocalAddressProvider
+6월 07, 2015 4:20:53 오후 org.mortbay.log.Slf4jLog info
+정보: Logging to org.slf4j.impl.JDK14LoggerAdapter(org.mortbay.log) via org.mortbay.log.Slf4jLog
+6월 07, 2015 4:20:53 오후 org.mortbay.log.Slf4jLog info
+정보: jetty-6.1.26
+6월 07, 2015 4:20:53 오후 org.mortbay.log.Slf4jLog info
+정보: Started SocketConnector@0.0.0.0:8080
+6월 07, 2015 4:20:53 오후 org.apache.reef.webserver.HttpServerImpl <init>
+정보: Jetty Server started with port: 8,080
+6월 07, 2015 4:20:53 오후 org.apache.reef.webserver.ReefEventStateManager$StartStateHandler onNext
+정보: StartStateHandler: Driver started with endpoint identifier [socket://127.0.1.1:11172]  and StartTime [org.apache.reef.wake.time.event.StartTime[1433661653996]]
+6월 07, 2015 4:20:54 오후 org.apache.reef.examples.hellohttp.HttpShellJobDriver$StartHandler onNext
+정보: INIT StartTime: org.apache.reef.wake.time.event.StartTime[1433661653996]
+6월 07, 2015 4:20:54 오후 org.apache.reef.examples.hellohttp.HttpShellJobDriver requestEvaluators
+정보: Schedule on 2 Evaluators.
+6월 07, 2015 4:20:54 오후 org.apache.reef.runtime.local.driver.ResourceManager sendRuntimeStatus
+정보: Allocated: 1, Outstanding requests: Optional:{1}
+6월 07, 2015 4:20:54 오후 org.apache.reef.runtime.local.driver.ResourceManager sendRuntimeStatus
+정보: Allocated: 2, Outstanding requests: Optional:{0}
+6월 07, 2015 4:20:54 오후 org.apache.reef.runtime.local.driver.ResourceManager sendRuntimeStatus
+정보: Allocated: 2, Outstanding requests: Optional:{0}
+6월 07, 2015 4:20:54 오후 org.apache.reef.examples.hellohttp.HttpShellJobDriver$AllocatedEvaluatorHandler onNext
+정보: Allocated Evaluator: Node-2-1433661654314 expect 2 running 0
+6월 07, 2015 4:20:54 오후 org.apache.reef.runtime.common.driver.evaluator.AllocatedEvaluatorImpl makeRootServiceConfiguration
+정보: No service configuration given and no ConfigurationProviders set.
+6월 07, 2015 4:20:54 오후 org.apache.reef.examples.hellohttp.HttpShellJobDriver$AllocatedEvaluatorHandler onNext
+정보: Allocated Evaluator: Node-1-1433661654026 expect 2 running 0
+6월 07, 2015 4:20:54 오후 org.apache.reef.runtime.common.driver.evaluator.AllocatedEvaluatorImpl makeRootServiceConfiguration
+정보: No service configuration given and no ConfigurationProviders set.
+6월 07, 2015 4:20:54 오후 org.apache.reef.runtime.local.process.ReefRunnableProcessObserver onResourceStatus
+정보: Sending resource status: org.apache.reef.runtime.common.driver.resourcemanager.ResourceStatusEventImpl@3e44adb2 
+6월 07, 2015 4:20:54 오후 org.apache.reef.runtime.local.process.ReefRunnableProcessObserver onResourceStatus
+정보: Sending resource status: org.apache.reef.runtime.common.driver.resourcemanager.ResourceStatusEventImpl@2ed208f1 
+6월 07, 2015 4:20:58 오후 org.apache.reef.webserver.ReefEventStateManager$ActiveContextStateHandler onNext
+정보: Active Context EvaluatorContext{contextIdentifier='Node-2-1433661654314_context', evaluatorIdentifier='Node-2-1433661654314', parentID=OptionalvNothing} received and handled in state handler
+6월 07, 2015 4:20:59 오후 org.apache.reef.examples.hellohttp.HttpShellJobDriver$ActiveContextHandler onNext
+정보: Context available: Node-2-1433661654314_context expect 2 state WAIT_EVALUATORS
+6월 07, 2015 4:20:59 오후 org.apache.reef.webserver.ReefEventStateManager$ActiveContextStateHandler onNext
+정보: Active Context EvaluatorContext{contextIdentifier='Node-1-1433661654026_context', evaluatorIdentifier='Node-1-1433661654026', parentID=OptionalvNothing} received and handled in state handler
+6월 07, 2015 4:20:59 오후 org.apache.reef.examples.hellohttp.HttpShellJobDriver$ActiveContextHandler onNext
+정보: Context available: Node-1-1433661654026_context expect 1 state WAIT_EVALUATORS
+6월 07, 2015 4:20:59 오후 org.apache.reef.examples.hellohttp.HttpShellJobDriver$ActiveContextHandler onNext
+정보: All evaluators ready; waiting for command. State: READY
+6월 07, 2015 4:20:59 오후 org.apache.reef.examples.hellohttp.HttpShellJobDriver$HttpClientCloseHandler onNext
+정보: Received a close message from the client. You can put code here to properly close drivers and evaluators.
+6월 07, 2015 4:20:59 오후 org.apache.reef.runtime.common.driver.DriverStatusManager onComplete
+정보: Clean shutdown of the Driver.
+6월 07, 2015 4:20:59 오후 org.apache.reef.wake.time.runtime.RuntimeClock close
+정보: Clock.close()
+6월 07, 2015 4:20:59 오후 org.apache.reef.examples.hellohttp.HttpShellJobDriver$StopHandler onNext
+정보: READY StopTime: org.apache.reef.wake.time.event.StopTime[1433661659404]
+java.lang.RuntimeException: Active context already closed
+	at org.apache.reef.runtime.common.driver.context.EvaluatorContext.close(EvaluatorContext.java:86)
+	at org.apache.reef.examples.hellohttp.HttpShellJobDriver$StopHandler.onNext(HttpShellJobDriver.java:360)
+	at org.apache.reef.examples.hellohttp.HttpShellJobDriver$StopHandler.onNext(HttpShellJobDriver.java:355)
+	at org.apache.reef.wake.impl.PubSubEventHandler.onNext(PubSubEventHandler.java:98)
+	at org.apache.reef.wake.time.runtime.RuntimeClock.run(RuntimeClock.java:225)
+	at org.apache.reef.runtime.common.launch.LaunchClass.run(LaunchClass.java:161)
+	at org.apache.reef.runtime.common.Launcher.main(Launcher.java:111)
+6월 07, 2015 4:20:59 오후 org.apache.reef.runtime.local.driver.ContainerManager close
+경고: Dirty shutdown with outstanding containers.
+6월 07, 2015 4:20:59 오후 org.apache.reef.runtime.local.driver.ContainerManager close
+경고: Force shutdown of: ProcessContainer{containedID='Node-2-1433661654314', nodeID='Node-2', errorHandlerRID='socket://127.0.1.1:11172', folder=/home/cp201434/swpp_ass2/scheduler/reef-examples/REEF_LOCAL_RUNTIME/HelloHTTP-1433661649688/Node-2-1433661654314}
+6월 07, 2015 4:20:59 오후 org.apache.reef.runtime.local.driver.ProcessContainer close
+경고: Force-closing a container that is still running: ProcessContainer{containedID='Node-2-1433661654314', nodeID='Node-2', errorHandlerRID='socket://127.0.1.1:11172', folder=/home/cp201434/swpp_ass2/scheduler/reef-examples/REEF_LOCAL_RUNTIME/HelloHTTP-1433661649688/Node-2-1433661654314}
+6월 07, 2015 4:20:59 오후 org.apache.reef.runtime.local.process.RunnableProcess cancel
+경고: The child process survived Process.destroy()
+6월 07, 2015 4:20:59 오후 org.apache.reef.runtime.local.process.RunnableProcess cancel
+경고: Attempting to kill the process via the kill command line
+6월 07, 2015 4:20:59 오후 org.apache.reef.runtime.local.driver.ContainerManager close
+경고: Force shutdown of: ProcessContainer{containedID='Node-1-1433661654026', nodeID='Node-1', errorHandlerRID='socket://127.0.1.1:11172', folder=/home/cp201434/swpp_ass2/scheduler/reef-examples/REEF_LOCAL_RUNTIME/HelloHTTP-1433661649688/Node-1-1433661654026}
+6월 07, 2015 4:20:59 오후 org.apache.reef.runtime.local.driver.ProcessContainer close
+경고: Force-closing a container that is still running: ProcessContainer{containedID='Node-1-1433661654026', nodeID='Node-1', errorHandlerRID='socket://127.0.1.1:11172', folder=/home/cp201434/swpp_ass2/scheduler/reef-examples/REEF_LOCAL_RUNTIME/HelloHTTP-1433661649688/Node-1-1433661654026}
+6월 07, 2015 4:20:59 오후 org.apache.reef.runtime.local.process.RunnableProcess cancel
+경고: The child process survived Process.destroy()
+6월 07, 2015 4:20:59 오후 org.apache.reef.runtime.local.process.RunnableProcess cancel
+경고: Attempting to kill the process via the kill command line
+6월 07, 2015 4:20:59 오후 org.apache.reef.runtime.common.driver.evaluator.Evaluators close
+경고: Unclean shutdown of evaluator Node-2-1433661654314
+6월 07, 2015 4:20:59 오후 org.apache.reef.runtime.common.driver.evaluator.EvaluatorManager close
+경고: Dirty shutdown of running evaluator id[Node-2-1433661654314]
+6월 07, 2015 4:20:59 오후 org.apache.reef.runtime.common.driver.evaluator.EvaluatorManager close
+경고: Force resource release because the client closed the clock.
+java.lang.IllegalStateException: Scheduling alarm on a closed clock
+	at org.apache.reef.wake.time.runtime.RuntimeClock.scheduleAlarm(RuntimeClock.java:80)
+	at org.apache.reef.runtime.common.driver.evaluator.EvaluatorManager.close(EvaluatorManager.java:220)
+	at org.apache.reef.runtime.common.driver.evaluator.EvaluatorManager.onEvaluatorDone(EvaluatorManager.java:394)
+	at org.apache.reef.runtime.common.driver.evaluator.EvaluatorManager.onEvaluatorStatusMessage(EvaluatorManager.java:371)
+	at org.apache.reef.runtime.common.driver.evaluator.EvaluatorManager.onEvaluatorHeartbeatMessage(EvaluatorManager.java:346)
+	at org.apache.reef.runtime.common.driver.evaluator.EvaluatorHeartbeatHandler.onNext(EvaluatorHeartbeatHandler.java:61)
+	at org.apache.reef.runtime.common.driver.evaluator.EvaluatorHeartbeatHandler.onNext(EvaluatorHeartbeatHandler.java:36)
+	at org.apache.reef.wake.remote.impl.HandlerContainer.onNext(HandlerContainer.java:145)
+	at org.apache.reef.wake.remote.impl.HandlerContainer.onNext(HandlerContainer.java:37)
+	at org.apache.reef.wake.remote.impl.OrderedPullEventHandler.onNext(OrderedRemoteReceiverStage.java:164)
+	at org.apache.reef.wake.remote.impl.OrderedPullEventHandler.onNext(OrderedRemoteReceiverStage.java:146)
+	at org.apache.reef.wake.impl.ThreadPoolStage$1.run(ThreadPoolStage.java:180)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+6월 07, 2015 4:20:59 오후 org.apache.reef.runtime.local.driver.ContainerManager release
+정보: Releasing Container with containerId [ProcessContainer{containedID='Node-1-1433661654026', nodeID='Node-1', errorHandlerRID='socket://127.0.1.1:11172', folder=/home/cp201434/swpp_ass2/scheduler/reef-examples/REEF_LOCAL_RUNTIME/HelloHTTP-1433661649688/Node-1-1433661654026}]
+6월 07, 2015 4:20:59 오후 org.apache.reef.runtime.local.driver.ProcessContainer close
+경고: Force-closing a container that is still running: ProcessContainer{containedID='Node-1-1433661654026', nodeID='Node-1', errorHandlerRID='socket://127.0.1.1:11172', folder=/home/cp201434/swpp_ass2/scheduler/reef-examples/REEF_LOCAL_RUNTIME/HelloHTTP-1433661649688/Node-1-1433661654026}
+6월 07, 2015 4:20:59 오후 org.apache.reef.runtime.common.driver.evaluator.EvaluatorManager close
+경고: Force resource release because the client closed the clock.
+java.lang.IllegalStateException: Scheduling alarm on a closed clock
+	at org.apache.reef.wake.time.runtime.RuntimeClock.scheduleAlarm(RuntimeClock.java:80)
+	at org.apache.reef.runtime.common.driver.evaluator.EvaluatorManager.close(EvaluatorManager.java:220)
+	at org.apache.reef.runtime.common.driver.evaluator.Evaluators.close(Evaluators.java:69)
+	at org.apache.reef.runtime.common.driver.DriverRuntimeStopHandler.onNext(DriverRuntimeStopHandler.java:59)
+	at org.apache.reef.runtime.common.driver.DriverRuntimeStopHandler.onNext(DriverRuntimeStopHandler.java:37)
+	at org.apache.reef.wake.impl.PubSubEventHandler.onNext(PubSubEventHandler.java:98)
+	at org.apache.reef.wake.time.runtime.RuntimeClock.run(RuntimeClock.java:234)
+	at org.apache.reef.runtime.common.launch.LaunchClass.run(LaunchClass.java:161)
+	at org.apache.reef.runtime.common.Launcher.main(Launcher.java:111)
+
+6월 07, 2015 4:20:59 오후 org.apache.reef.runtime.common.driver.defaults.DefaultEvaluatorCompletionHandler onNext
+정보: Received CompletedEvaluator: CompletedEvaluator{id='Node-1-1433661654026'}
+6월 07, 2015 4:20:59 오후 org.apache.reef.runtime.local.process.RunnableProcess cancel
+경고: The child process survived Process.destroy()
+6월 07, 2015 4:20:59 오후 org.apache.reef.runtime.local.process.RunnableProcess cancel
+경고: Attempting to kill the process via the kill command line
+6월 07, 2015 4:20:59 오후 org.apache.reef.runtime.local.driver.ResourceManager sendRuntimeStatus
+정보: Allocated: 1, Outstanding requests: Optional:{0}
+6월 07, 2015 4:20:59 오후 org.apache.reef.runtime.local.driver.ContainerManager release
+정보: Releasing Container with containerId [ProcessContainer{containedID='Node-2-1433661654314', nodeID='Node-2', errorHandlerRID='socket://127.0.1.1:11172', folder=/home/cp201434/swpp_ass2/scheduler/reef-examples/REEF_LOCAL_RUNTIME/HelloHTTP-1433661649688/Node-2-1433661654314}]
+6월 07, 2015 4:20:59 오후 org.apache.reef.runtime.local.driver.ProcessContainer close
+경고: Force-closing a container that is still running: ProcessContainer{containedID='Node-2-1433661654314', nodeID='Node-2', errorHandlerRID='socket://127.0.1.1:11172', folder=/home/cp201434/swpp_ass2/scheduler/reef-examples/REEF_LOCAL_RUNTIME/HelloHTTP-1433661649688/Node-2-1433661654314}
+6월 07, 2015 4:20:59 오후 org.apache.reef.runtime.local.process.ReefRunnableProcessObserver onResourceStatus
+정보: Sending resource status: org.apache.reef.runtime.common.driver.resourcemanager.ResourceStatusEventImpl@2d21471c 
+6월 07, 2015 4:20:59 오후 org.apache.reef.runtime.local.process.ReefRunnableProcessObserver onResourceStatus
+정보: Sending resource status: org.apache.reef.runtime.common.driver.resourcemanager.ResourceStatusEventImpl@63c39669 
+6월 07, 2015 4:20:59 오후 org.apache.reef.runtime.local.process.RunnableProcess cancel
+경고: The child process survived Process.destroy()
+6월 07, 2015 4:20:59 오후 org.apache.reef.runtime.local.process.RunnableProcess cancel
+경고: Attempting to kill the process via the kill command line
+6월 07, 2015 4:20:59 오후 org.apache.reef.runtime.local.driver.ResourceManager sendRuntimeStatus
+정보: Allocated: 0, Outstanding requests: Optional:{0}
+6월 07, 2015 4:20:59 오후 org.apache.reef.runtime.common.driver.evaluator.Evaluators close
+경고: Unclean shutdown of evaluator Node-1-1433661654026
+6월 07, 2015 4:20:59 오후 org.apache.reef.runtime.common.driver.DriverStatusManager sendJobEndingMessageToClient
+경고: There was an exception during clock.close().
+java.lang.RuntimeException: Active context already closed
+	at org.apache.reef.runtime.common.driver.context.EvaluatorContext.close(EvaluatorContext.java:86)
+	at org.apache.reef.examples.hellohttp.HttpShellJobDriver$StopHandler.onNext(HttpShellJobDriver.java:360)
+	at org.apache.reef.examples.hellohttp.HttpShellJobDriver$StopHandler.onNext(HttpShellJobDriver.java:355)
+	at org.apache.reef.wake.impl.PubSubEventHandler.onNext(PubSubEventHandler.java:98)
+	at org.apache.reef.wake.time.runtime.RuntimeClock.run(RuntimeClock.java:225)
+	at org.apache.reef.runtime.common.launch.LaunchClass.run(LaunchClass.java:161)
+	at org.apache.reef.runtime.common.Launcher.main(Launcher.java:111)
+
+6월 07, 2015 4:20:59 오후 org.apache.reef.runtime.local.driver.ContainerManager release
+정보: Ignoring release request for unknown containerID [Node-1-1433661654026]
+6월 07, 2015 4:20:59 오후 org.apache.reef.runtime.local.driver.ResourceManager sendRuntimeStatus
+정보: Allocated: 0, Outstanding requests: Optional:{0}
+6월 07, 2015 4:21:00 오후 org.apache.reef.runtime.local.driver.ContainerManager release
+정보: Ignoring release request for unknown containerID [Node-2-1433661654314]
+6월 07, 2015 4:21:00 오후 org.apache.reef.runtime.local.driver.ResourceManager sendRuntimeStatus
+정보: Allocated: 0, Outstanding requests: Optional:{0}
+6월 07, 2015 4:21:00 오후 org.apache.reef.runtime.common.driver.DriverRuntimeStopHandler onNext
+정보: Driver shutdown complete
+6월 07, 2015 4:21:00 오후 org.mortbay.log.Slf4jLog info
+정보: Stopped SocketConnector@0.0.0.0:8080
+6월 07, 2015 4:21:00 오후 org.apache.reef.runtime.common.Launcher main
+정보: Exiting Launcher.main()
