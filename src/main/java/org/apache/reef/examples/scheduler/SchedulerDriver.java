@@ -214,7 +214,7 @@ public final class SchedulerDriver {
     final ActiveContext context = task.getActiveContext().get();
     if(reexecutedList.containsKey(taskId))
     {
-      if(reexecutedList.get(taskId) == executionNum)
+      if(reexecutedList.get(taskId) + 1  == executionNum)
       {
         synchronized (SchedulerDriver.this) {
           scheduler.setCanceled(taskId);
