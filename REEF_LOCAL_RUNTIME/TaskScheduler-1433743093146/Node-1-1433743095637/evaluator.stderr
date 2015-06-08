@@ -1,8 +1,0 @@
-6월 08, 2015 2:58:16 오후 org.apache.reef.util.REEFVersion logVersion
-정보: REEF Version: 0.12.0-incubating-SNAPSHOT
-6월 08, 2015 2:58:16 오후 org.apache.reef.wake.remote.address.HostnameBasedLocalAddressProvider <init>
-정보: Instantiating HostnameBasedLocalAddressProvider
-6월 08, 2015 2:58:18 오후 org.apache.reef.wake.remote.address.HostnameBasedLocalAddressProvider <init>
-정보: Instantiating HostnameBasedLocalAddressProvider
-6월 08, 2015 2:58:18 오후 org.apache.reef.runtime.common.evaluator.context.defaults.DefaultContextStartHandler onNext
-정보: DefaultContextStartHandler received: org.apache.reef.runtime.common.evaluator.context.ContextStartImpl@64492e19

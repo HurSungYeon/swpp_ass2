@@ -75,6 +75,8 @@ public final class SchedulerDriver {
   private int nMaxEval = 3, nActiveEval = 0, nRequestedEval = 0;
 
   private int serviceNum = 0;
+  private int executionNum = 3;
+
 
   private final EvaluatorRequestor requestor;
 
@@ -173,7 +175,7 @@ public final class SchedulerDriver {
     }
   }
 
-  final class FailedTaskHandler implements EventHandler<FailedTask> {
+  final class KillJobFailureHandler implements EventHandler<FailedTask> {
     @Override
     public void onNext(final FailedTask task) {
       final int taskId = Integer.valueOf(task.getId());
@@ -191,6 +193,52 @@ public final class SchedulerDriver {
         }
       }
     }
+  }
+
+  final class ReexecuteTaskFailureHandler implements EventHandler<FailedTask> {
+    
+    private int prevTaskId = 1;
+    private int executedTime=0;
+    public void onNext(final FailedTask task) {
+       final int taskId = Integer.valueOf(task.getId());
+       LOG.log(Level.INFO, "test1 : {0}", String.valueOf(task.getId()));
+       final ActiveContext context = task.getActiveContext().get();
+       if(prevTaskId == taskId)
+       {
+         if(executedTime == executionNum)
+         {
+           synchronized (SchedulerDriver.this) {
+             scheduler.setCanceled(taskId);
+             LOG.log(Level.INFO, "Task failed after several times. Reuse the evaluator : {0}", String.valueOf(retainable));
+
+             if (retainable) {
+               retainEvaluator(context);
+             } else {
+               reallocateEvaluator(context);
+             }
+           }
+        }else{
+          LOG.log(Level.INFO, "test2 : {0}", String.valueOf(task.getId()));
+          reexecute(task);
+          executedTime++;
+        }
+     }
+     else{
+       LOG.log(Level.INFO, "test3 : {0}", String.valueOf(task.getId()));
+       prevTaskId = taskId;
+       executedTime = 1;
+       reexecute(task);
+       //TODO: rerun task
+    }
+  } 
+}
+
+
+  private void reexecute(final FailedTask task){
+    final ActiveContext context = task.getActiveContext().get();
+    scheduler.reexecuteTask(Integer.valueOf(task.getId()));
+    LOG.log(Level.INFO, "test4 : {0}", String.valueOf(task.getId()));
+    scheduler.submitTask(context);
   }
 
 
@@ -291,7 +339,7 @@ public final class SchedulerDriver {
     }
   }
 
-  public SchedulerResponse setService(final List<String> args) {
+  public SchedulerResponse setService(final List<String> args, final List<String> args2) {
     if (args.size() != 1) {
       return SchedulerResponse.BAD_REQUEST("Usage : Only one value can be used");
     }
@@ -299,6 +347,8 @@ public final class SchedulerDriver {
       return SchedulerResponse.BAD_REQUEST("Value should be 1 or 0");
     }
      serviceNum = Integer.valueOf(args.get(0));
+     if(serviceNum==1)
+       executionNum = Integer.valueOf(args2.get(0));
 
      return SchedulerResponse.OK("Your service is set to " + serviceNum);
   }

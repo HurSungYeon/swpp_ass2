@@ -91,7 +91,7 @@ final class SchedulerHttpHandler implements HttpHandler {
         result = schedulerDriver.get().setMaxEvaluators(queryMap.get("num"));
         break;
       case "service":
-        result = schedulerDriver.get().setService(queryMap.get("num"));
+        result = schedulerDriver.get().setService(queryMap.get("num"),queryMap.get("time"));
         break;
       default:
         result = SchedulerResponse.NOT_FOUND("Unsupported operation");

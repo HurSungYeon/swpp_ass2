@@ -73,7 +73,7 @@ public final class SchedulerREEF {
       .set(DriverConfiguration.ON_EVALUATOR_ALLOCATED, SchedulerDriver.EvaluatorAllocatedHandler.class)
       .set(DriverConfiguration.ON_CONTEXT_ACTIVE, SchedulerDriver.ActiveContextHandler.class)
       .set(DriverConfiguration.ON_TASK_COMPLETED, SchedulerDriver.CompletedTaskHandler.class)
-      .set(DriverConfiguration.ON_TASK_FAILED, SchedulerDriver.FailedTaskHandler.class)
+      .set(DriverConfiguration.ON_TASK_FAILED, SchedulerDriver.ReexecuteTaskFailureHandler.class)
       .build();
 
     return driverConf;
