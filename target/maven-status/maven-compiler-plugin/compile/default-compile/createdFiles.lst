@@ -1,16 +1,14 @@
 org/apache/reef/examples/library/ShellTask.class
-org/apache/reef/examples/scheduler/SchedulerDriver$ReexecuteTaskFailureHandler.class
 org/apache/reef/examples/scheduler/SchedulerREEF$Retain.class
 org/apache/reef/examples/scheduler/SchedulerDriver.class
 org/apache/reef/examples/scheduler/SchedulerREEF.class
-org/apache/reef/examples/scheduler/SchedulerDriver$KillJobFailureHandler.class
 org/apache/reef/examples/scheduler/SchedulerDriver$ActiveContextHandler.class
-org/apache/reef/examples/scheduler/TaskFailureHandler.class
 org/apache/reef/examples/library/Command.class
 org/apache/reef/examples/scheduler/Scheduler.class
 org/apache/reef/examples/utils/wake/BlockingEventHandler.class
 org/apache/reef/examples/scheduler/SchedulerREEFYarn.class
 org/apache/reef/examples/scheduler/SchedulerDriver$CompletedTaskHandler.class
+org/apache/reef/examples/scheduler/SchedulerDriver$TaskFailureHandler.class
 org/apache/reef/examples/scheduler/SchedulerDriver$StartHandler.class
 org/apache/reef/examples/scheduler/SchedulerDriver$EvaluatorAllocatedHandler.class
 org/apache/reef/examples/scheduler/PrimeTask.class

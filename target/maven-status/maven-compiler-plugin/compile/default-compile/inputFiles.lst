@@ -7,7 +7,6 @@
 /home/cp201434/swpp_ass2/scheduler/reef-examples/src/main/java/org/apache/reef/examples/scheduler/PrimeTask.java
 /home/cp201434/swpp_ass2/scheduler/reef-examples/src/main/java/org/apache/reef/examples/scheduler/TaskEntity.java
 /home/cp201434/swpp_ass2/scheduler/reef-examples/src/main/java/org/apache/reef/examples/library/Command.java
-/home/cp201434/swpp_ass2/scheduler/reef-examples/src/main/java/org/apache/reef/examples/scheduler/TaskFailureHandler.java
 /home/cp201434/swpp_ass2/scheduler/reef-examples/src/main/java/org/apache/reef/examples/scheduler/SchedulerREEF.java
 /home/cp201434/swpp_ass2/scheduler/reef-examples/src/main/java/org/apache/reef/examples/scheduler/SchedulerResponse.java
 /home/cp201434/swpp_ass2/scheduler/reef-examples/src/main/java/org/apache/reef/examples/scheduler/SchedulerDriver.java

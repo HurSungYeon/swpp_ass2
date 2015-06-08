@@ -36,7 +36,7 @@ import javax.inject.Inject;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import java.util.HashMap;
 /**
  * Driver for TaskScheduler. It receives the commands by HttpRequest and
  * execute them in a FIFO(First In First Out) order.
@@ -76,7 +76,7 @@ public final class SchedulerDriver {
 
   private int serviceNum = 0;
   private int executionNum = 3;
-
+  private final HashMap<Integer,Integer> reexecutedList = new HashMap<Integer,Integer>();
 
   private final EvaluatorRequestor requestor;
 
@@ -155,6 +155,7 @@ public final class SchedulerDriver {
    * The evaluator is reused for the next Task if retainable is set to {@code true}.
    * Otherwise the evaluator is released.
    */
+
   final class CompletedTaskHandler implements EventHandler<CompletedTask> {
     @Override
     public void onNext(final CompletedTask task) {
@@ -165,6 +166,7 @@ public final class SchedulerDriver {
 
         LOG.log(Level.INFO, "Task completed. Reuse the evaluator : {0}", String.valueOf(retainable));
         final ActiveContext context = task.getActiveContext();
+        reexecutedList.remove(taskId);
 
         if (retainable) {
           retainEvaluator(context);
@@ -175,9 +177,20 @@ public final class SchedulerDriver {
     }
   }
 
-  final class KillJobFailureHandler implements EventHandler<FailedTask> {
-    @Override
+  final class TaskFailureHandler implements EventHandler<FailedTask> {
+  
+  @Override
     public void onNext(final FailedTask task) {
+      if(serviceNum==0)
+      {
+        KillJobFailure(task);
+      }else{
+        ReexecuteTaskFailure(task);
+      }
+    }
+  }
+
+   private void KillJobFailure(final FailedTask task) {
       final int taskId = Integer.valueOf(task.getId());
 
       synchronized (SchedulerDriver.this) {
@@ -193,51 +206,41 @@ public final class SchedulerDriver {
         }
       }
     }
-  }
 
-  final class ReexecuteTaskFailureHandler implements EventHandler<FailedTask> {
+  private void ReexecuteTaskFailure(final FailedTask task) {
     
-    private int prevTaskId = 1;
-    private int executedTime=0;
-    public void onNext(final FailedTask task) {
-       final int taskId = Integer.valueOf(task.getId());
-       LOG.log(Level.INFO, "test1 : {0}", String.valueOf(task.getId()));
-       final ActiveContext context = task.getActiveContext().get();
-       if(prevTaskId == taskId)
-       {
-         if(executedTime == executionNum)
-         {
-           synchronized (SchedulerDriver.this) {
-             scheduler.setCanceled(taskId);
-             LOG.log(Level.INFO, "Task failed after several times. Reuse the evaluator : {0}", String.valueOf(retainable));
-
-             if (retainable) {
-               retainEvaluator(context);
-             } else {
-               reallocateEvaluator(context);
-             }
-           }
-        }else{
-          LOG.log(Level.INFO, "test2 : {0}", String.valueOf(task.getId()));
-          reexecute(task);
-          executedTime++;
+    int executedTime=0;
+    final int taskId = Integer.valueOf(task.getId());
+    final ActiveContext context = task.getActiveContext().get();
+    if(reexecutedList.containsKey(taskId))
+    {
+      if(reexecutedList.get(taskId) == executionNum)
+      {
+        synchronized (SchedulerDriver.this) {
+          scheduler.setCanceled(taskId);
+          LOG.log(Level.INFO, "Task failed after several times. Reuse the evaluator : {0}", String.valueOf(retainable));
+          if (retainable) {
+            retainEvaluator(context);
+          } else {
+            reallocateEvaluator(context);
+          }
         }
-     }
-     else{
-       LOG.log(Level.INFO, "test3 : {0}", String.valueOf(task.getId()));
-       prevTaskId = taskId;
-       executedTime = 1;
+     }else{
+       executedTime = reexecutedList.get(taskId);
+       reexecutedList.remove(taskId);
+       reexecutedList.put(taskId,executedTime+1);
        reexecute(task);
-       //TODO: rerun task
-    }
-  } 
-}
-
+     }
+  }
+  else{
+    reexecutedList.put(taskId,1);
+    reexecute(task);
+ }
+} 
 
   private void reexecute(final FailedTask task){
     final ActiveContext context = task.getActiveContext().get();
     scheduler.reexecuteTask(Integer.valueOf(task.getId()));
-    LOG.log(Level.INFO, "test4 : {0}", String.valueOf(task.getId()));
     scheduler.submitTask(context);
   }
 
