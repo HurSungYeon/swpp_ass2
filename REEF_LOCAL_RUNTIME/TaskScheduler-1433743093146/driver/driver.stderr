@@ -1,0 +1,60 @@
+6월 08, 2015 2:58:13 오후 org.apache.reef.util.REEFVersion logVersion
+정보: REEF Version: 0.12.0-incubating-SNAPSHOT
+6월 08, 2015 2:58:14 오후 org.apache.reef.wake.remote.address.HostnameBasedLocalAddressProvider <init>
+정보: Instantiating HostnameBasedLocalAddressProvider
+6월 08, 2015 2:58:15 오후 org.apache.reef.wake.remote.address.HostnameBasedLocalAddressProvider <init>
+정보: Instantiating HostnameBasedLocalAddressProvider
+6월 08, 2015 2:58:15 오후 org.mortbay.log.Slf4jLog info
+정보: Logging to org.slf4j.impl.JDK14LoggerAdapter(org.mortbay.log) via org.mortbay.log.Slf4jLog
+6월 08, 2015 2:58:15 오후 org.mortbay.log.Slf4jLog info
+정보: jetty-6.1.x
+6월 08, 2015 2:58:15 오후 org.mortbay.log.Slf4jLog warn
+경고: failed SocketConnector@0.0.0.0:8080: java.net.BindException: 주소가 이미 사용 중입니다
+6월 08, 2015 2:58:15 오후 org.mortbay.log.Slf4jLog warn
+경고: failed Server@7c3bfaa2: java.net.BindException: 주소가 이미 사용 중입니다
+6월 08, 2015 2:58:15 오후 org.mortbay.log.Slf4jLog info
+정보: jetty-6.1.x
+6월 08, 2015 2:58:15 오후 org.mortbay.log.Slf4jLog info
+정보: Started SocketConnector@0.0.0.0:40249
+6월 08, 2015 2:58:15 오후 org.apache.reef.webserver.HttpServerImpl <init>
+정보: Jetty Server started with port: 40,249
+6월 08, 2015 2:58:15 오후 org.apache.reef.runtime.common.driver.client.LoggingJobStatusHandler onNext
+정보: Received a JobStatus message that can't be sent:
+identifier: "TaskScheduler"
+state: INIT
+
+6월 08, 2015 2:58:15 오후 org.apache.reef.runtime.common.driver.client.LoggingJobStatusHandler onNext
+정보: Received a JobStatus message that can't be sent:
+identifier: "TaskScheduler"
+state: RUNNING
+
+6월 08, 2015 2:58:15 오후 org.apache.reef.examples.scheduler.SchedulerDriver$StartHandler onNext
+정보: Driver started at org.apache.reef.wake.time.event.StartTime[1433743095628]
+6월 08, 2015 2:58:15 오후 org.apache.reef.examples.scheduler.SchedulerDriver$EvaluatorAllocatedHandler onNext
+정보: Evaluator is ready
+6월 08, 2015 2:58:15 오후 org.apache.reef.runtime.local.driver.ResourceManager sendRuntimeStatus
+정보: Allocated: 1, Outstanding requests: Optional:{0}
+6월 08, 2015 2:58:15 오후 org.apache.reef.runtime.local.driver.ResourceManager sendRuntimeStatus
+정보: Allocated: 1, Outstanding requests: Optional:{0}
+6월 08, 2015 2:58:15 오후 org.apache.reef.runtime.common.driver.evaluator.AllocatedEvaluatorImpl makeRootServiceConfiguration
+정보: No service configuration given and no ConfigurationProviders set.
+6월 08, 2015 2:58:15 오후 org.apache.reef.runtime.local.process.ReefRunnableProcessObserver onResourceStatus
+정보: Sending resource status: org.apache.reef.runtime.common.driver.resourcemanager.ResourceStatusEventImpl@71a27302 
+6월 08, 2015 2:58:18 오후 org.apache.reef.examples.scheduler.SchedulerDriver$ActiveContextHandler onNext
+정보: Context available : SchedulerContext
+6월 08, 2015 2:58:44 오후 org.apache.reef.webserver.JettyHandler handle
+정보: JettyHandler handle is entered with target: /reef-example-scheduler/v1/list 
+6월 08, 2015 2:58:44 오후 org.apache.reef.webserver.JettyHandler handle
+정보: calling HttpHandler.onHttpRequest from JettyHandler.handle() for reef-example-scheduler.
+6월 08, 2015 2:58:44 오후 org.apache.reef.webserver.JettyHandler handle
+정보: JettyHandler handle exists
+6월 08, 2015 2:58:44 오후 org.apache.reef.webserver.JettyHandler handle
+정보: JettyHandler handle is entered with target: /favicon.ico 
+6월 08, 2015 2:58:44 오후 org.apache.reef.webserver.JettyHandler handle
+정보: JettyHandler handle exists
+6월 08, 2015 2:59:00 오후 org.apache.reef.webserver.JettyHandler handle
+정보: JettyHandler handle is entered with target: /reef-example-scheduler/v1/service 
+6월 08, 2015 2:59:00 오후 org.apache.reef.webserver.JettyHandler handle
+정보: calling HttpHandler.onHttpRequest from JettyHandler.handle() for reef-example-scheduler.
+6월 08, 2015 2:59:00 오후 org.apache.reef.webserver.JettyHandler handle
+정보: JettyHandler handle exists

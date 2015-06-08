@@ -211,7 +211,12 @@ final class Scheduler {
     runningTasks.remove(task);
     finishedTasks.add(task);
   }
-
+  
+  public synchronized void setCanceled(final int taskId) {
+    final TaskEntity task = getTask(taskId, runningTasks);
+    runningTasks.remove(task);
+    canceledTasks.add(task);
+  }
   /**
    * Iterate over the collection to find a TaskEntity with ID.
    */

@@ -8,6 +8,7 @@ org/apache/reef/examples/library/Command.class
 org/apache/reef/examples/scheduler/Scheduler.class
 org/apache/reef/examples/utils/wake/BlockingEventHandler.class
 org/apache/reef/examples/scheduler/SchedulerREEFYarn.class
+org/apache/reef/examples/scheduler/SchedulerDriver$FailedTaskHandler.class
 org/apache/reef/examples/scheduler/SchedulerDriver$CompletedTaskHandler.class
 org/apache/reef/examples/scheduler/SchedulerDriver$StartHandler.class
 org/apache/reef/examples/scheduler/SchedulerDriver$EvaluatorAllocatedHandler.class

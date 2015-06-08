@@ -90,6 +90,9 @@ final class SchedulerHttpHandler implements HttpHandler {
       case "max-eval":
         result = schedulerDriver.get().setMaxEvaluators(queryMap.get("num"));
         break;
+      case "service":
+        result = schedulerDriver.get().setService(queryMap.get("num"));
+        break;
       default:
         result = SchedulerResponse.NOT_FOUND("Unsupported operation");
     }

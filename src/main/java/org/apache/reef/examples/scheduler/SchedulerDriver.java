@@ -24,6 +24,7 @@ import org.apache.reef.driver.evaluator.AllocatedEvaluator;
 import org.apache.reef.driver.evaluator.EvaluatorRequest;
 import org.apache.reef.driver.evaluator.EvaluatorRequestor;
 import org.apache.reef.driver.task.CompletedTask;
+import org.apache.reef.driver.task.FailedTask;
 import org.apache.reef.tang.annotations.Parameter;
 import org.apache.reef.tang.annotations.Unit;
 import org.apache.reef.wake.EventHandler;
@@ -72,6 +73,8 @@ public final class SchedulerDriver {
 
   @GuardedBy("SchedulerDriver.this")
   private int nMaxEval = 3, nActiveEval = 0, nRequestedEval = 0;
+
+  private int serviceNum = 0;
 
   private final EvaluatorRequestor requestor;
 
@@ -170,6 +173,27 @@ public final class SchedulerDriver {
     }
   }
 
+  final class FailedTaskHandler implements EventHandler<FailedTask> {
+    @Override
+    public void onNext(final FailedTask task) {
+      final int taskId = Integer.valueOf(task.getId());
+
+      synchronized (SchedulerDriver.this) {
+        scheduler.setCanceled(taskId);
+
+        LOG.log(Level.INFO, "Task failed. Reuse the evaluator : {0}", String.valueOf(retainable));
+        final ActiveContext context = task.getActiveContext().get();
+
+        if (retainable) {
+          retainEvaluator(context);
+        } else {
+          reallocateEvaluator(context);
+        }
+      }
+    }
+  }
+
+
   /**
    * Get the list of tasks in the scheduler.
    */
@@ -265,6 +289,18 @@ public final class SchedulerDriver {
       }
       return SchedulerResponse.OK("You can use evaluators up to " + nMaxEval + " evaluators.");
     }
+  }
+
+  public SchedulerResponse setService(final List<String> args) {
+    if (args.size() != 1) {
+      return SchedulerResponse.BAD_REQUEST("Usage : Only one value can be used");
+    }
+    else if(!(Integer.valueOf(args.get(0)) == 1 || Integer.valueOf(args.get(0)) == 0)){
+      return SchedulerResponse.BAD_REQUEST("Value should be 1 or 0");
+    }
+     serviceNum = Integer.valueOf(args.get(0));
+
+     return SchedulerResponse.OK("Your service is set to " + serviceNum);
   }
 
   /**
