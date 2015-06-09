@@ -1,4 +1,4 @@
-/**
+/*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
  * distributed with this work for additional information
@@ -18,6 +18,9 @@
  */
 package org.apache.reef.examples.scheduler;
 
+
+import org.apache.reef.driver.context.ServiceConfiguration;
+import org.apache.reef.tang.Configuration;
 import org.apache.reef.driver.context.ActiveContext;
 import org.apache.reef.driver.context.ContextConfiguration;
 import org.apache.reef.driver.evaluator.AllocatedEvaluator;
@@ -115,7 +118,7 @@ public final class SchedulerDriver {
         nActiveEval++;
         nRequestedEval--;
       }
-
+      
       evaluator.submitContext(ContextConfiguration.CONF
         .set(ContextConfiguration.IDENTIFIER, "SchedulerContext")
         .build());
